@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Configuration
 public class DatabasePopulator {
@@ -42,8 +43,9 @@ public class DatabasePopulator {
 
     private List<Pacote> populatePacotes(List<Localidade> localidades) {
         List<Pacote> pacotes = new ArrayList<>(numeroPacotes);
+        Random rand = new Random();
         for (int i=0; i<numeroPacotes; i++) {
-            pacotes.add(fakerFacade.pacoteDummy(localidades.get(0)));
+            pacotes.add(fakerFacade.pacoteDummy(localidades.get(rand.nextInt(50))));
         }
         return this.pacoteRepository.saveAll(pacotes);
     }

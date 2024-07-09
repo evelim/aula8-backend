@@ -17,4 +17,8 @@ public class PacoteService {
     public List<Pacote> obterPacotes() {
         return this.repository.findAll();
     }
+
+    public List<Pacote> obterPacotes(String criteria) {
+        return this.repository.findPacotesByCriteria(criteria);
+    }
 }
